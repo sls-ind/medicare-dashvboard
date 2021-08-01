@@ -21,6 +21,9 @@ export class PatientFormComponent {
             age:  ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             contact: ['', [Validators.required, Validators.minLength(10)]],
+            address: ['', [Validators.required]],
+            city:  ['', Validators.required],
+            pin : ['', [Validators.required, Validators.minLength(6)]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             confirmPassword: ['', Validators.required],
             acceptTerms: [false, Validators.requiredTrue]
