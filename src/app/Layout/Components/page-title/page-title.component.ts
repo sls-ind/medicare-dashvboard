@@ -20,7 +20,7 @@ export class PageTitleComponent {
   @Input() icon;
 
   createNewForm() {
-    this.router.navigateByUrl('/newForm')
+    this.router.navigateByUrl('/forms/controls')
   }
 
 }
