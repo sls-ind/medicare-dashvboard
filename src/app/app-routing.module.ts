@@ -51,6 +51,7 @@ import {LayoutComponent} from './DemoPages/Forms/Elements/layout/layout.componen
 // Charts
 
 import {ChartjsComponent} from './DemoPages/Charts/chartjs/chartjs.component';
+import { PatientFormComponent } from './DemoPages/create-patientform/create-patientform.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,7 @@ const routes: Routes = [
       // Dashboads
 
       {path: '', component: AnalyticsComponent, data: {extraParameter: 'dashboardsMenu'}},
+      
 
       // Elements
 
@@ -113,6 +115,7 @@ const routes: Routes = [
       {path: 'pages/forgot-password-boxed', component: ForgotPasswordBoxedComponent, data: {extraParameter: ''}},
     ]
   },
+  {path: 'newForm', component: PatientFormComponent},
   {path: '**', redirectTo: ''}
 ];
 
