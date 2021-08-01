@@ -25,7 +25,7 @@
               <ngb-panel id="dashboardsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
-                    <i class="vsm-icon pe-7s-rocket"></i>
+                    <i class="vsm-icon pe-7s-note2"></i>
                     <span class="vsm-title">Dashboards</span>
                     <i class="vsm-arrow"></i>
                   </button>
@@ -68,12 +68,12 @@
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel>
+              <ngb-panel *ngIf="admin">
                 <ng-template ngbPanelHeader>
                   <div class="vsm-header">Bootstrap Components</div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="elementsMenu">
+              <ngb-panel *ngIf="admin" id="elementsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-diamond"></i>
@@ -113,7 +113,7 @@
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="componentsMenu">
+              <ngb-panel *ngIf="admin" id="componentsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-car"></i>
@@ -157,7 +157,7 @@
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="formElementsMenu">
+              <ngb-panel *ngIf="admin" id="formElementsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-helm"></i>
@@ -180,7 +180,7 @@
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="tablesMenu">
+              <ngb-panel *ngIf="admin" id="tablesMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-safe"></i>
@@ -199,12 +199,12 @@
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel>
+              <ngb-panel *ngIf="admin">
                 <ng-template ngbPanelHeader>
                   <div class="vsm-header">Dashboard Boxes</div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="pagesMenu3">
+              <ngb-panel *ngIf="admin" id="pagesMenu3">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-graph2"></i>
@@ -224,8 +224,8 @@
                 </ng-template>
               </ngb-panel>
             </ngb-accordion>
-            <div class="vsm-header">Charts</div>
-            <div class="vsm-item">
+            <div class="vsm-header" *ngIf="admin">Charts</div>
+            <div class="vsm-item" *ngIf="admin">
               <a routerLink="/charts/chartjs" routerLinkActive="active-item" class="vsm-link">
                 <i class="vsm-icon pe-7s-graph2"></i>
                 <span class="vsm-title">ChartJS</span>

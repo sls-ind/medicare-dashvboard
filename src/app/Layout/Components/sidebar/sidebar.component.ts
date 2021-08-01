@@ -20,7 +20,8 @@ export class SidebarComponent implements OnInit {
   private newInnerWidth: number;
   private innerWidth: number;
   activeId = 'dashboardsMenu';
-
+  admin = false;
+  
   toggleSidebar() {
     this.globals.toggleSidebar = !this.globals.toggleSidebar;
   }

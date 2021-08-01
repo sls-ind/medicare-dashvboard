@@ -8,6 +8,9 @@ import { faTh, faCheck, faTrash, faAngleDown, faAngleUp } from '@fortawesome/fre
   templateUrl: './analytics.component.html',
 })
 export class AnalyticsComponent implements OnInit {
+  
+  patientDetails = []; 
+  formatedData = {};
 
   faTh = faTh;
   faCheck = faCheck;
@@ -17,7 +20,9 @@ export class AnalyticsComponent implements OnInit {
 
   heading = 'Analytics Dashboard';
   subheading = 'This is an example dashboard created using build-in elements and components.';
-  icon = 'pe-7s-plane icon-gradient bg-tempting-azure';
+  icon = 'pe-7s-graph2 icon-gradient bg-tempting-azure';
+  
+  admin = true;
 
   slideConfig6 = {
     className: 'center',
@@ -27,6 +32,7 @@ export class AnalyticsComponent implements OnInit {
     adaptiveHeight: true,
     dots: true,
   };
+  chartOptionsDetails= [];
 
   public datasets = [
     {
@@ -161,6 +167,273 @@ export class AnalyticsComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.dataFormater();
+    this.getPatientDetails();
+    // this.chartDetails();
+  }
+
+  dataFormater(){
+    const data = [
+      {
+          "patientID": 65,
+          "vitalName": "BP_SYS",
+          "vitalValue": "120",
+          "updatedTS": "28/07/2021 02:37 PM"
+      },
+      {
+          "patientID": 65,
+          "vitalName": "HEART_RATE",
+          "vitalValue": "120",
+          "updatedTS": "28/07/2021 02:37 PM"
+      },
+      {
+          "patientID": 65,
+          "vitalName": "SUGAR",
+          "vitalValue": "140",
+          "updatedTS": "28/07/2021 02:37 PM"
+      },
+      {
+          "patientID": 65,
+          "vitalName": "O2SUPPORT",
+          "vitalValue": "2",
+          "updatedTS": "28/07/2021 02:37 PM"
+      },
+      {
+          "patientID": 65,
+          "vitalName": "TEMP",
+          "vitalValue": "37.1",
+          "updatedTS": "28/07/2021 02:37 PM"
+      },
+      {
+          "patientID": 65,
+          "vitalName": "BP_DIA",
+          "vitalValue": "80",
+          "updatedTS": "28/07/2021 02:37 PM"
+      },
+      {
+          "patientID": 65,
+          "vitalName": "SPO2",
+          "vitalValue": "95",
+          "updatedTS": "28/07/2021 02:37 PM"
+      },
+
+
+      {
+        "patientID": 65,
+        "vitalName": "BP_SYS",
+        "vitalValue": "110",
+        "updatedTS": "29/07/2021 06:40 AM"
+    },
+    {
+        "patientID": 65,
+        "vitalName": "HEART_RATE",
+        "vitalValue": "110",
+        "updatedTS": "29/07/2021 06:40 AM"
+    },
+    {
+        "patientID": 65,
+        "vitalName": "SUGAR",
+        "vitalValue": "145",
+        "updatedTS": "29/07/2021 06:40 AM"
+    },
+    {
+        "patientID": 65,
+        "vitalName": "O2SUPPORT",
+        "vitalValue": "3",
+        "updatedTS": "29/07/2021 06:40 AM"
+    },
+    {
+        "patientID": 65,
+        "vitalName": "TEMP",
+        "vitalValue": "35",
+        "updatedTS": "29/07/2021 06:40 AM"
+    },
+    {
+        "patientID": 65,
+        "vitalName": "BP_DIA",
+        "vitalValue": "70",
+        "updatedTS": "29/07/2021 06:40 AM"
+    },
+    {
+        "patientID": 65,
+        "vitalName": "SPO2",
+        "vitalValue": "95",
+        "updatedTS": "29/07/2021 06:40 AM"
+    },
+
+
+    {
+      "patientID": 65,
+      "vitalName": "BP_SYS",
+      "vitalValue": "130",
+      "updatedTS": "29/07/2021 04:15 PM"
+  },
+  {
+      "patientID": 65,
+      "vitalName": "HEART_RATE",
+      "vitalValue": "140",
+      "updatedTS": "29/07/2021 04:15 PM"
+  },
+  {
+      "patientID": 65,
+      "vitalName": "SUGAR",
+      "vitalValue": "110",
+      "updatedTS": "29/07/2021 04:15 PM"
+  },
+  {
+      "patientID": 65,
+      "vitalName": "O2SUPPORT",
+      "vitalValue": "5",
+      "updatedTS": "29/07/2021 04:15 PM"
+  },
+  {
+      "patientID": 65,
+      "vitalName": "TEMP",
+      "vitalValue": "36.1",
+      "updatedTS": "29/07/2021 04:15 PM"
+  },
+  {
+      "patientID": 65,
+      "vitalName": "BP_DIA",
+      "vitalValue": "80.1",
+      "updatedTS": "29/07/2021 04:15 PM"
+  },
+  {
+      "patientID": 65,
+      "vitalName": "SPO2",
+      "vitalValue": "95.2",
+      "updatedTS": "29/07/2021 04:15 PM"
+  }
+  ]
+  
+  const formatedData = {};
+  // const keys = ["BP_SYS","HEART_RATE","SUGAR","O2SUPPORT","TEMP","BP_DIA","SPO2"]
+  
+  // keys.forEach(element => {
+  data.forEach(element => {
+    if(['BP_SYS', 'BP_DIA'].includes( element['vitalName'] ) ){
+      if(formatedData && formatedData['BP'] && formatedData['BP'].length){
+        formatedData['BP'].push(element)
+      } else {
+        formatedData['BP'] = [element];
+      }
+    } else if (formatedData && formatedData[element['vitalName']] && formatedData[element['vitalName']].length ){
+      formatedData[element['vitalName']].push(element);
+    } else {
+      formatedData[element['vitalName']] = [element];
+    }
+  });
+  
+  console.log ("formatedData" , formatedData );
+  // this.formatedData = formatedData; 
+  for (const property in formatedData) {
+    this.chartDetails(formatedData[property]);
+  }
+  
+}
+
+  chartDetails(property){
+    
+    // this.chartOptionsDetails = {
+    //   barChartLabels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug'],
+    //   barChartType: 'bar',
+    //   barChartLegend: true,
+    //   barChartData: [
+    //     {data: [65, 59, 80, 81, 56, 55, 40], label: 'SIS'},
+    //     {data: [28, 48, 40, 19, 86, 27, 90], label: 'DIA'}
+    //   ]
+    // }
+    let obj = {
+      'barChartType' : 'bar',
+      'barChartLegend' : true,
+    };
+    let barChartLabels = []
+    let barChartData = {}
+     
+
+    property.forEach( element => {
+      if (barChartLabels && !barChartLabels.includes(element.updatedTS) ){
+        barChartLabels.push(element.updatedTS);
+      } 
+      barChartData[element['vitalName']] && barChartData[element['vitalName']].length ? 
+        barChartData[element['vitalName']].push(element['vitalValue']) : 
+        barChartData[element['vitalName']] = [element['vitalValue']];
+
+  // const keys = ["BP_SYS","HEART_RATE","SUGAR","O2SUPPORT","TEMP","BP_DIA","SPO2"]
+
+      // default value 
+      // if( element['vitalName']) {
+        
+      // }
+
+    });
+
+    let finalChartOptionsDetails = obj;
+    finalChartOptionsDetails['barChartData'] = [];
+
+    finalChartOptionsDetails['barChartLabels'] = barChartLabels ;
+    for (const label in barChartData) {
+      finalChartOptionsDetails['barChartData'].push({label: label, data: barChartData[label]});
+    }
+    console.log("finalChartOptionsDetails", finalChartOptionsDetails);
+    this.chartOptionsDetails.push(finalChartOptionsDetails);
+    // this.chartOptionsDetails = {
+    //   barChartLabels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug'],
+    //   barChartType: 'bar',
+    //   barChartLegend: true,
+    //   barChartData: [
+    //     {data: [65, 59, 80, 81, 56, 55, 40], label: 'SIS'},
+    //     {data: [28, 48, 40, 19, 86, 27, 90], label: 'DIA'}
+    //   ]
+    // }
+  }
+  getPatientDetails(){
+    this.patientDetails = [
+      {
+        "bedNo":32,
+        "avatar": './assets/images/avatars/1.jpg',
+        "name": 'patient A',
+        "diseaseTypes": 'Dengue', 
+        "status": 'Recovering ',
+        "admitDate": '31 July',
+        "recovered": 40,
+        "recoveredCode": 'bg-danger',
+        "discharge": 'N',
+      },
+      {
+        "bedNo":35,
+        "avatar": './assets/images/avatars/2.jpg',
+        "name": 'patient B',
+        "diseaseTypes": 'Dermatophyte Infection', 
+        "status": 'Recovering ',
+        "admitDate": '29 July',
+        "recovered": 71,
+        "recoveredCode": 'bg-warning',
+        "discharge": 'N',
+      },
+      {
+        "bedNo":36,
+        "avatar": './assets/images/avatars/3.jpg',
+        "name": 'patient C',
+        "diseaseTypes": 'Dermatophyte Infection', 
+        "status": 'Recovering ',
+        "admitDate": '29 July',
+        "recovered": 71,
+        "recoveredCode": 'bg-warning',
+        "discharge": 'N',
+      },
+      {
+        "bedNo":36,
+        "avatar": './assets/images/avatars/4.jpg',
+        "name": 'patient D',
+        "diseaseTypes": 'Dermatophyte Infection', 
+        "status": 'Recovering ',
+        "admitDate": '29 July',
+        "recovered": 95,
+        "recoveredCode": 'bg-success',
+        "discharge": 'N',
+      }
+    ] 
   }
 
 }
