@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiURL: "https://iabhi.azurewebsites.net/",
+  authOptions: {
+    authType: "subscriptionKey",
+    subscriptionKey: "O1lkjKGwhSfs2gaGFsNVW1JmLa159O1OgYOa0iyDKC8",
+  },
 };
 
 /*
