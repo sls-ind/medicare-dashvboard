@@ -129,6 +129,8 @@ import { DoughnutChartComponent } from "./DemoPages/Charts/chartjs/examples/doug
 import { PieChartComponent } from "./DemoPages/Charts/chartjs/examples/pie-chart/pie-chart.component";
 import { SpeechComponent } from "./speech/speech.component";
 
+import { MaterialModule } from "./material/material.module";
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -300,6 +302,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
       },
     }),
     MsalModule,
+    MaterialModule,
   ],
   providers: [
     {
