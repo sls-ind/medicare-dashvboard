@@ -1,12 +1,13 @@
 <div [class]="'app-sidebar sidebar-shadow ' + (config$ | async).sidebarTheme" (mouseover)="sidebarHover()"
-     (mouseout)="sidebarHover()">
+  (mouseout)="sidebarHover()">
   <div class="app-header__logo">
-    <div class="logo-src"></div>
+    <!-- <div class="logo-src"></div> -->
+    CoPIN
     <div class="header__pane ml-auto">
       <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
-              [ngClass]="{'is-active' : globals.toggleSidebar}" (click)="toggleSidebar()">
+        [ngClass]="{'is-active' : globals.toggleSidebar}" (click)="toggleSidebar()">
         <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
+          <span class="hamburger-inner"></span>
         </span>
       </button>
     </div>
@@ -25,7 +26,7 @@
               <ngb-panel id="dashboardsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
-                    <i class="vsm-icon pe-7s-rocket"></i>
+                    <i class="vsm-icon pe-7s-note2"></i>
                     <span class="vsm-title">Dashboards</span>
                     <i class="vsm-arrow"></i>
                   </button>
@@ -34,8 +35,8 @@
                   <div class="vsm-dropdown">
                     <div class="vsm-list">
                       <div class="vsm-item"><a routerLink="" routerLinkActive="active-item"
-                                               [routerLinkActiveOptions]="{exact: true}" class="vsm-link"><span
-                        class="vsm-title">Analytics</span></a>
+                          [routerLinkActiveOptions]="{exact: true}" class="vsm-link"><span
+                            class="vsm-title">Analytics</span></a>
                       </div>
                     </div>
                   </div>
@@ -54,26 +55,26 @@
                     <div class="vsm-list">
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/pages/login-boxed" class="vsm-link"><span
-                          class="vsm-title">Login Boxed</span></a>
+                            class="vsm-title">Login Boxed</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/pages/register-boxed" class="vsm-link"><span
-                          class="vsm-title">Register Boxed</span></a>
+                            class="vsm-title">Register Boxed</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/pages/forgot-password-boxed"
-                           class="vsm-link"><span class="vsm-title">Forgot Password Boxed</span></a>
+                          class="vsm-link"><span class="vsm-title">Forgot Password Boxed</span></a>
                       </div>
                     </div>
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel>
+              <ngb-panel *ngIf="admin">
                 <ng-template ngbPanelHeader>
                   <div class="vsm-header">Bootstrap Components</div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="elementsMenu">
+              <ngb-panel *ngIf="admin" id="elementsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-diamond"></i>
@@ -85,35 +86,34 @@
                   <div class="vsm-dropdown">
                     <div class="vsm-list">
                       <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/elements/buttons-standard"
-                           class="vsm-link"> <span
-                          class="vsm-title">Standard Buttons</span></a>
+                        <a routerLinkActive="active-item" routerLink="/elements/buttons-standard" class="vsm-link">
+                          <span class="vsm-title">Standard Buttons</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/elements/dropdowns" class="vsm-link"> <span
-                          class="vsm-title">Dropdowns</span></a>
+                            class="vsm-title">Dropdowns</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/elements/icons" class="vsm-link"><span
-                          class="vsm-title">Icons</span></a>
+                            class="vsm-title">Icons</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/elements/cards" class="vsm-link"><span
-                          class="vsm-title">Cards</span></a>
+                            class="vsm-title">Cards</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/elements/list-group" class="vsm-link"> <span
-                          class="vsm-title">List Groups</span></a>
+                            class="vsm-title">List Groups</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/elements/timeline" class="vsm-link"> <span
-                          class="vsm-title">Timeline</span></a>
+                            class="vsm-title">Timeline</span></a>
                       </div>
                     </div>
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="componentsMenu">
+              <ngb-panel *ngIf="admin" id="componentsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-car"></i>
@@ -130,34 +130,33 @@
                       </div> -->
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/components/accordions" class="vsm-link"> <span
-                          class="vsm-title">Accordions</span></a>
+                            class="vsm-title">Accordions</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/components/modals" class="vsm-link"> <span
-                          class="vsm-title">Modals</span></a>
+                            class="vsm-title">Modals</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/components/progress-bar" class="vsm-link"> <span
-                          class="vsm-title">Progress Bar</span></a>
+                            class="vsm-title">Progress Bar</span></a>
                       </div>
                       <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/components/tooltips-popovers"
-                           class="vsm-link"> <span
-                          class="vsm-title">Tooltips &amp; Popovers</span></a>
+                        <a routerLinkActive="active-item" routerLink="/components/tooltips-popovers" class="vsm-link">
+                          <span class="vsm-title">Tooltips &amp; Popovers</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/components/carousel" class="vsm-link"> <span
-                          class="vsm-title">Carousel</span></a>
+                            class="vsm-title">Carousel</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/components/pagination" class="vsm-link"> <span
-                          class="vsm-title">Pagination</span></a>
+                            class="vsm-title">Pagination</span></a>
                       </div>
                     </div>
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="formElementsMenu">
+              <ngb-panel *ngIf="admin" id="formElementsMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-helm"></i>
@@ -170,17 +169,17 @@
                     <div class="vsm-list">
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/forms/controls" class="vsm-link"><span
-                          class="vsm-title">Controls</span></a>
+                            class="vsm-title">Controls</span></a>
                       </div>
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/forms/layouts" class="vsm-link"><span
-                          class="vsm-title">Layouts</span></a>
+                            class="vsm-title">Layouts</span></a>
                       </div>
                     </div>
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="tablesMenu">
+              <ngb-panel *ngIf="admin" id="tablesMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-safe"></i>
@@ -193,18 +192,18 @@
                     <div class="vsm-list">
                       <div class="vsm-item">
                         <a routerLinkActive="active-item" routerLink="/tables/bootstrap" class="vsm-link"> <span
-                          class="vsm-title">Bootstrap 4 Tables</span></a>
+                            class="vsm-title">Bootstrap 4 Tables</span></a>
                       </div>
                     </div>
                   </div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel>
+              <ngb-panel *ngIf="admin">
                 <ng-template ngbPanelHeader>
                   <div class="vsm-header">Dashboard Boxes</div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="pagesMenu3">
+              <ngb-panel *ngIf="admin" id="pagesMenu3">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-graph2"></i>
@@ -224,8 +223,8 @@
                 </ng-template>
               </ngb-panel>
             </ngb-accordion>
-            <div class="vsm-header">Charts</div>
-            <div class="vsm-item">
+            <div class="vsm-header" *ngIf="admin">Charts</div>
+            <div class="vsm-item" *ngIf="admin">
               <a routerLink="/charts/chartjs" routerLinkActive="active-item" class="vsm-link">
                 <i class="vsm-icon pe-7s-graph2"></i>
                 <span class="vsm-title">ChartJS</span>
