@@ -131,6 +131,8 @@ import { SpeechComponent } from "./speech/speech.component";
 
 import { MaterialModule } from "./material/material.module";
 
+import { PatientFormComponent } from './DemoPages/create-patientform/create-patientform.component';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
@@ -242,6 +244,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ProgressBarComponent,
     PaginationComponent,
     TooltipsPopoversComponent,
+    PatientFormComponent,
 
     // Tables
 
