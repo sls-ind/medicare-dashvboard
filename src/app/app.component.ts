@@ -7,6 +7,7 @@ import { Component, AfterViewInit } from "@angular/core";
 })
 export class AppComponent implements AfterViewInit {
   title = "Patient Dashboard";
+  openChatBox = true;
 
   constructor(private http: HttpClient) {}
 
@@ -34,7 +35,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   processResponse(resp) {
-    debugger;
     //@ts-ignore
     document.getElementById("chat").src =
       "https://webchat.botframework.com/embed/iabhi-health-bot-cumx8kh?t=" +

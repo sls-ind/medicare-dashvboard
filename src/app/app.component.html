@@ -1,4 +1,19 @@
 <router-outlet></router-outlet>
-<div>
-    <iframe id="chat" style="width: 400px; height: 400px;" src=''></iframe>
-</div>
+<ng-container *ngIf="openChatBox; else elseTemplate">
+    <div style="position: absolute; right: 20px;">
+        <div class="chatbox-title" (click)="openChatBox = !openChatBox"
+            style="font-size: 18px; text-align: right; color: #9b9b9b; padding-right: 15px;" title="Close chat window">X
+        </div>
+        <iframe id="chat" style="width: 400px; height: 300px;" src=''></iframe>
+    </div>
+</ng-container>
+<ng-template #elseTemplate>
+    <div style="position: absolute; right: 20px;">
+
+        <div class="chatbox-open-message" (click)="openChatBox = !openChatBox" style="font-size: 16px; cursor: pointer;"
+            title="Click on to chat with me.">
+            Hi. How Can I help you?
+        </div>
+    </div>
+</ng-template>
+<app-footer></app-footer>

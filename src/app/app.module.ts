@@ -130,6 +130,9 @@ import { PieChartComponent } from "./DemoPages/Charts/chartjs/examples/pie-chart
 import { SpeechComponent } from "./speech/speech.component";
 
 import { MaterialModule } from "./material/material.module";
+import { NewsFeedComponent } from './DemoPages/Dashboards/news-feed/news-feed.component';
+import { PatientsListComponent } from './DemoPages/Dashboards/patients-list/patients-list.component';
+import { PatientDashboardComponent } from './DemoPages/Dashboards/patient-dashboard/patient-dashboard.component';
 
 import { PatientFormComponent } from './DemoPages/create-patientform/create-patientform.component';
 
@@ -276,6 +279,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     BubbleChartComponent,
     ScatterChartComponent,
     SpeechComponent,
+    NewsFeedComponent,
+    PatientsListComponent,
+    PatientDashboardComponent,
   ],
   imports: [
     BrowserModule,
