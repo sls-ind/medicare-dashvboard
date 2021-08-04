@@ -21,12 +21,12 @@ const routes: Routes = [
     component: BaseLayoutComponent,
     children: [
       {
-        path: "",
+        path: "home",
         component: AnalyticsComponent,
         data: { extraParameter: "dashboardsMenu" },
       },
       {
-        path: "forms/controls",
+        path: "add-user",
         component: ControlsComponent,
         data: { extraParameter: "formElementsMenu" },
       },
@@ -45,6 +45,7 @@ const routes: Routes = [
         component: PatientDashboardComponent,
         data: { extraParameter: "patientsInfo" },
       },
+      { path: "**", redirectTo: "home" },
     ],
   },
 

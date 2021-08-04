@@ -130,11 +130,12 @@ import { PieChartComponent } from "./DemoPages/Charts/chartjs/examples/pie-chart
 import { SpeechComponent } from "./speech/speech.component";
 
 import { MaterialModule } from "./material/material.module";
-import { NewsFeedComponent } from './DemoPages/Dashboards/news-feed/news-feed.component';
-import { PatientsListComponent } from './DemoPages/Dashboards/patients-list/patients-list.component';
-import { PatientDashboardComponent } from './DemoPages/Dashboards/patient-dashboard/patient-dashboard.component';
+import { NewsFeedComponent } from "./DemoPages/Dashboards/news-feed/news-feed.component";
+import { PatientsListComponent } from "./DemoPages/Dashboards/patients-list/patients-list.component";
+import { PatientDashboardComponent } from "./DemoPages/Dashboards/patient-dashboard/patient-dashboard.component";
 
-import { PatientFormComponent } from './DemoPages/create-patientform/create-patientform.component';
+import { PatientFormComponent } from "./DemoPages/create-patientform/create-patientform.component";
+import { ToastsContainer } from "./toast-container/toast-container.component";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -282,6 +283,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NewsFeedComponent,
     PatientsListComponent,
     PatientDashboardComponent,
+    ToastsContainer,
   ],
   imports: [
     BrowserModule,

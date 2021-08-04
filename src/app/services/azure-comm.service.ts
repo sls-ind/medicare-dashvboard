@@ -1,13 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-
+import { of } from "rxjs";
 @Injectable({
   providedIn: "root",
 })
 export class AzureCommService {
   apiURL: String = environment.apiURL;
-
+  user = null;
   userLatitude: number;
   userLongitude: number;
 
@@ -21,6 +21,12 @@ export class AzureCommService {
     const URL = this.apiURL + "api/v1/getProducts/" + btoa(searchTxt);
 
     return this.httpClient.get(URL);
+  }
+
+  getUserRole(id) {
+    setTimeout(() => {
+      return of({ role: "ADMIN" });
+    }, 1000);
   }
 
   test() {
