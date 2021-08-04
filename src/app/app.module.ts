@@ -136,6 +136,7 @@ import { PatientDashboardComponent } from "./DemoPages/Dashboards/patient-dashbo
 
 import { PatientFormComponent } from "./DemoPages/create-patientform/create-patientform.component";
 import { ToastsContainer } from "./toast-container/toast-container.component";
+import { PatientVitalsComponent } from './DemoPages/Dashboards/patient-vitals/patient-vitals.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -284,6 +285,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     PatientsListComponent,
     PatientDashboardComponent,
     ToastsContainer,
+    PatientVitalsComponent,
   ],
   imports: [
     BrowserModule,

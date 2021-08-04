@@ -8,12 +8,17 @@ import { Component, AfterViewInit } from "@angular/core";
 export class AppComponent implements AfterViewInit {
   title = "Patient Dashboard";
   openChatBox = true;
-
+  chatBotResp: any;
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
+  }
+
+  toggleChatbox() {
+    this.openChatBox = !this.openChatBox;
+    this.processResponse();
   }
 
   ngAfterViewInit() {
@@ -30,14 +35,18 @@ export class AppComponent implements AfterViewInit {
     this.http
       .get("https://webchat.botframework.com/api/tokens", requestOptions)
       .subscribe((resp) => {
-        this.processResponse(resp);
+        this.chatBotResp = resp;
+        this.processResponse();
       });
   }
 
-  processResponse(resp) {
+  processResponse() {
+    if (!this.openChatBox) {
+      return;
+    }
     //@ts-ignore
     document.getElementById("chat").src =
       "https://webchat.botframework.com/embed/iabhi-health-bot-cumx8kh?t=" +
-      resp;
+      this.chatBotResp;
   }
 }
