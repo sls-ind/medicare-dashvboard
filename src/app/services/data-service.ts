@@ -1,4 +1,9 @@
-import { HttpClient } from "@angular/common/http";
+import {
+  HttpClient,
+  HttpEvent,
+  HttpParams,
+  HttpRequest,
+} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { Observable } from "rxjs";
@@ -22,5 +27,22 @@ export class DataService {
   getVitalsHistory(patientId): Observable<Object> {
     const URL = this.apiURL + "api/v1/getVitals/" + patientId;
     return this.httpClient.get(URL);
+  }
+
+  //common file upload service to handle patient and vitals entry
+  uploadFile(urlEndpoint: string, file: File): Observable<HttpEvent<any>> {
+    const url = this.apiURL + urlEndpoint;
+    let formData = new FormData();
+    formData.append("file", file);
+
+    let params = new HttpParams();
+
+    const options = {
+      params: params,
+      reportProgress: true,
+    };
+
+    const req = new HttpRequest("POST", url, formData, options);
+    return this.httpClient.request(req);
   }
 }

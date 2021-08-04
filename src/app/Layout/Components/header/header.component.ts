@@ -21,6 +21,7 @@ export class HeaderComponent {
   geoLocation: string;
   userWeather: any;
   userName: string;
+  weatherIcon = "pe-7s-sun";
 
   @HostBinding("class.isActive")
   get isActiveAsGetter() {
@@ -66,13 +67,25 @@ export class HeaderComponent {
 
     this.httpClient.get(URL, { params: params }).subscribe((resp) => {
       console.log(resp);
-      console.log(
-        resp["results"][0].phrase,
-        resp["results"][0].temperature.value,
-        resp["results"][0].temperature.unit
-      );
+      const phrase = resp["results"][0].phrase;
+      if (phrase && phrase.includes("Cloud")) {
+        this.weatherIcon = "pe-7s-cloud";
+      } else if (
+        (phrase && phrase.includes("Rain")) ||
+        phrase.includes("Shower") ||
+        phrase.includes("Precep")
+      ) {
+        this.weatherIcon = "pe-7s-umbrella";
+      } else if (
+        (phrase && phrase.includes("air")) ||
+        phrase.includes("Air") ||
+        phrase.includes("Wind")
+      ) {
+        this.weatherIcon = "pe-7s-paper-plane";
+      }
       this.userWeather =
-        resp["results"][0].phrase +
+        // resp["results"][0].phrase +
+        // " " +
         resp["results"][0].temperature.value +
         resp["results"][0].temperature.unit;
     });

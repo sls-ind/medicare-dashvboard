@@ -6,7 +6,10 @@
     </div>
     <div class="app-header-right">
       <div class="widget-content-left">
-        <span *ngIf="geoLocation">Weather: {{userWeather}}</span>
+        <span *ngIf="geoLocation">Weather:
+          <i class="icon {{weatherIcon}}" style="font-size: 18px;"></i> &nbsp;
+          {{userWeather}}
+        </span>
         <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         </button> -->
         <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">

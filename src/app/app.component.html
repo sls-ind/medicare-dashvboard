@@ -1,19 +1,21 @@
 <router-outlet></router-outlet>
-<ng-container *ngIf="openChatBox; else elseTemplate">
-    <div style="position: absolute; right: 20px;">
-        <div class="chatbox-title" (click)="openChatBox = !openChatBox"
-            style="font-size: 18px; text-align: right; color: #9b9b9b; padding-right: 15px;" title="Close chat window">X
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+<div class="row">
+    <div class="col-sml-12" style="position: absolute; right: 25px; top: calc(100vh - 20px); z-index: 1000;">
+        <div [hidden]="openChatBox === false">
+            <div class="chatbox-title" (click)="toggleChatbox()"
+                style="font-size: 18px; text-align: right; color: #9b9b9b; padding-right: 15px;"
+                title="Close chat window">X
+            </div>
+            <iframe id="chat" style="width: 400px; height: 300px;" src=''></iframe>
         </div>
-        <iframe id="chat" style="width: 400px; height: 300px;" src=''></iframe>
-    </div>
-</ng-container>
-<ng-template #elseTemplate>
-    <div style="position: absolute; right: 20px;">
 
-        <div class="chatbox-open-message" (click)="openChatBox = !openChatBox" style="font-size: 16px; cursor: pointer;"
-            title="Click on to chat with me.">
-            Hi. How Can I help you?
+        <div [hidden]="openChatBox === true" (click)="toggleChatbox()">
+            <div class="chatbox-open-message" style="font-size: 16px; cursor: pointer;"
+                title="Click on to chat with me.">
+                Hi. How Can I help you?
+            </div>
         </div>
     </div>
-</ng-template>
+</div>
 <app-footer></app-footer>
