@@ -23,6 +23,7 @@ export class PatientDashboardComponent implements OnInit {
   faAngleDown = faAngleDown;
   faAngleUp = faAngleUp;
   patientData;
+  patientVitalsHistory;
   heading = "Analytics Dashboard";
   subheading =
     "This is an example dashboard created using build-in elements and components.";
@@ -211,6 +212,19 @@ export class PatientDashboardComponent implements OnInit {
       },
       (error) => {
         alert("Failed to load details");
+      }
+    );
+    this.dataService.getVitalsHistory(id).subscribe(
+      (data) => {
+        if (!data) {
+          alert("No vitals record found");
+        }
+        this.patientVitalsHistory = data;
+        debugger;
+        //TODO: FOrmat the data and display accordingly
+      },
+      (error) => {
+        alert("Failed to load vitals data");
       }
     );
   }
