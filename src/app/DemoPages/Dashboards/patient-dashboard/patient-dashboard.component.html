@@ -1,0 +1,260 @@
+<div class="mb-3 card" *ngIf="!admin">
+    <div class="card-header-tab card-header">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+            <i class="header-icon lnr-charts icon-gradient bg-happy-green"> </i>
+            Portfolio Performance
+        </div>
+    </div>
+    <div class="no-gutters row">
+        <div class="col-sm-6 col-md-4 col-xl-4">
+            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+                <div class="icon-wrapper rounded-circle">
+                    <div class="icon-wrapper-bg opacity-10 bg-warning"></div>
+                    <i class="pe-7s-album text-white opacity-8"></i>
+                </div>
+                <div class="widget-chart-content">
+                    <div class="widget-subheading">Cash Deposits</div>
+                    <div class="widget-numbers">1,7M</div>
+                    <div class="widget-description opacity-8 text-focus">
+                        <div class="d-inline text-danger pr-1">
+                            <fa-icon [icon]="faAngleDown"></fa-icon>
+                            <span class="pl-1">54.1%</span>
+                        </div>
+                        less earnings
+                    </div>
+                </div>
+            </div>
+            <div class="divider m-0 d-md-none d-sm-block"></div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-xl-4">
+            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+                <div class="icon-wrapper rounded-circle">
+                    <div class="icon-wrapper-bg opacity-9 bg-danger"></div>
+                    <i class="pe-7s-portfolio text-white"></i>
+                </div>
+                <div class="widget-chart-content">
+                    <div class="widget-subheading">Invested Dividents</div>
+                    <div class="widget-numbers"><span>9M</span></div>
+                    <div class="widget-description opacity-8 text-focus">
+                        Grow Rate:
+                        <span class="text-info pl-1">
+                            <fa-icon [icon]="faAngleDown"></fa-icon>
+                            <span class="pl-1">14.1%</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="divider m-0 d-md-none d-sm-block"></div>
+        </div>
+        <div class="col-sm-12 col-md-4 col-xl-4">
+            <div class="card no-shadow rm-border bg-transparent widget-chart text-left">
+                <div class="icon-wrapper rounded-circle">
+                    <div class="icon-wrapper-bg opacity-9 bg-success"></div>
+                    <i class="pe-7s-light text-white"></i>
+                </div>
+                <div class="widget-chart-content">
+                    <div class="widget-subheading">Capital Gains</div>
+                    <div class="widget-numbers text-success"><span>$563</span></div>
+                    <div class="widget-description text-focus">
+                        Increased by
+                        <span class="text-warning pl-1">
+                            <fa-icon [icon]="faAngleUp"></fa-icon>
+                            <span class="pl-1">7.35%</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center d-block p-3 card-footer">
+        <button class="btn-pill btn-shadow btn-wide fsize-1 btn btn-primary btn-lg">
+            <span class="mr-2 opacity-7">
+                <i class="icon icon-anim-pulse ion-ios-analytics-outline"></i>
+            </span>
+            <span class="mr-1">View Complete Report</span>
+        </button>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <!-- <div class="col-sm-12 col-lg-6">
+    </div> -->
+    <div class="col-sm-12 col-lg-6">
+        <img src="./../../../../assets/images/info/bloodPressureInfo.png" alt=""
+            style="width: 100%; margin-bottom: 10px;">
+        <div class="mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    <i class="header-icon lnr-cloud-download icon-gradient bg-happy-itmeo"> </i>
+                    Medical History
+                </div>
+            </div>
+            <div class="p-0 card-body">
+                <div class="p-1 slick-slider-sm mx-auto">
+                    <div class="widget-chart widget-chart2 text-left p-0">
+                        <div class="widget-chat-wrapper-outer" *ngFor="let item of chartOptionsDetails"
+                            style="margin: 10px;">
+                            <div class="widget-chart-content widget-chart-content-lg pb-0">
+                                <div class="widget-chart-flex">
+                                    <div class="widget-title opacity-5 text-muted text-uppercase"></div>
+                                </div>
+                                <!-- <div class="widget-numbers">
+                    <div class="widget-chart-flex">
+                      <div>
+                        <span class="text-warning">34</span>
+                      </div>
+                      <div class="widget-title ml-2 font-size-lg font-weight-normal text-dark">
+                        <span class="opacity-5 text-muted pl-2 pr-1">5%</span>
+                        increase
+                      </div>
+                    </div>
+                  </div> -->
+                            </div>
+                            <div class="widget-chart-wrapper he-auto opacity-10 m-0">
+                                <div class="d-block">
+
+                                    <app-dynamic-chart [chartOptionsDetails]="item"></app-dynamic-chart>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    <i class="header-icon lnr-lighter icon-gradient bg-amy-crisp"> </i>
+                    Patient History
+                </div>
+            </div>
+            <div class="scroll-area-lg">
+                <perfect-scrollbar [autoPropagation]="true">
+                    <div class="p-4">
+                        <div
+                            class="vertical-time-simple vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                            <div class="dot-danger vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">All Hands Meeting</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-warning vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-success vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">Build the production release
+                                            <div class="badge badge-danger ml-2">NEW</div>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-primary vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">
+                                            Something not important
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-warning vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-success vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">Build the production release
+                                            <div class="badge badge-danger ml-2">NEW</div>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-info vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">This dot has an info state</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-dark vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">This dot has a dark state</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-danger vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">All Hands Meeting</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-warning vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-success vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">Build the production release
+                                            <div class="badge badge-danger ml-2">NEW</div>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dot-primary vertical-timeline-element">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">
+                                            Something not important
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+            </div>
+            <div class="d-block text-center card-footer">
+                <button class="btn-shadow btn-wide btn-pill btn btn-focus">
+                    View All Messages
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
