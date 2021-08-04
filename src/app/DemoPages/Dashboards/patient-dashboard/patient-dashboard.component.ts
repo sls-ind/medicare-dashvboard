@@ -7,6 +7,8 @@ import {
   faAngleDown,
   faAngleUp,
 } from "@fortawesome/free-solid-svg-icons";
+import { ActivatedRoute, Router } from "@angular/router";
+import { DataService } from "src/app/services/data-service";
 
 @Component({
   selector: "app-patient-dashboard",
@@ -20,7 +22,7 @@ export class PatientDashboardComponent implements OnInit {
   faTrash = faTrash;
   faAngleDown = faAngleDown;
   faAngleUp = faAngleUp;
-
+  patientData;
   heading = "Analytics Dashboard";
   subheading =
     "This is an example dashboard created using build-in elements and components.";
@@ -183,9 +185,34 @@ export class PatientDashboardComponent implements OnInit {
     maintainAspectRatio: false,
   };
 
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private dataService: DataService
+  ) {}
+
   ngOnInit() {
     this.dataFormater();
+    const id = this.activatedRoute.snapshot.params["id"];
+    this.getData(id);
     // this.chartDetails();
+  }
+
+  getData(id) {
+    this.dataService.getPatientDetails(id).subscribe(
+      (data) => {
+        if (!data) {
+          alert("No record available for the providied patient id");
+          this.router.navigateByUrl("/patient");
+        }
+        this.patientData = data;
+        debugger;
+        //TODO: FOrmat the data and display accordingly
+      },
+      (error) => {
+        alert("Failed to load details");
+      }
+    );
   }
 
   dataFormater() {
