@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 mb-2">
                 <input type="text" name="regForm" id="regForm" [(ngModel)]="searchInput"
-                    placeholder="Enter a search value" class="patient-search-input" />
+                    placeholder="Enter a search value" class="patient-search-input" (keyup.enter)="submitSearch()" />
                 &nbsp;
                 <button type="button" class="btn" color="primary" (click)="startButton($event)">
                     <i *ngIf="recognizing" class="icon pe-7s-volume1" style="font-size: 18px;"></i>
