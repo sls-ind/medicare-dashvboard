@@ -3,6 +3,7 @@ import { ThemeOptions } from "../../../theme-options";
 import { select } from "@angular-redux/store";
 import { Observable } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
+import { DataService } from "src/app/services/data-service";
 
 @Component({
   selector: "app-sidebar",
@@ -13,7 +14,8 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     public globals: ThemeOptions,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dataService: DataService
   ) {}
 
   @select("config") public config$: Observable<any>;
@@ -42,6 +44,14 @@ export class SidebarComponent implements OnInit {
 
     this.extraParameter =
       this.activatedRoute.snapshot.firstChild.data.extraParameter;
+    this.dataService.onUserInfoUpdate$.subscribe((da) => {
+      this.userId = this.dataService.userID;
+      if (this.dataService.userRole) {
+        this.isPatient = !this.dataService.userRole
+          .toLocaleLowerCase()
+          .includes("admin");
+      }
+    });
   }
 
   @HostListener("window:resize", ["$event"])
