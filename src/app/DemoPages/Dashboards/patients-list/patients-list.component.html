@@ -1,7 +1,25 @@
-<div class="main-card mb-3 card">
-    <div class="card-header">
-        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Patient List</div>
+<div class="card m-3">
+    <h5 class="card-header">Patient Search</h5>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 mb-2">
+                <input type="text" name="regForm" id="regForm" [(ngModel)]="searchInput"
+                    placeholder="Enter a search value" class="patient-search-input" />
+                &nbsp;
+                <button type="button" class="btn" color="primary" (click)="startButton($event)">
+                    <i *ngIf="recognizing" class="icon pe-7s-volume1" style="font-size: 18px;"></i>
+                    <i *ngIf="!recognizing" class="icon pe-7s-micro" style="font-size: 18px;"></i>
+                </button>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <button class="btn btn-primary mr-1" (click)="submitSearch()">
+                    <i class="icon pe-7s-search" style="font-size: 18px;"></i> &nbsp; Search
+                </button>
+            </div>
+        </div>
     </div>
+</div>
+<div class="card m-3">
     <div class="table-responsive">
         <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
             <thead>

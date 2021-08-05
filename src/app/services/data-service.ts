@@ -6,13 +6,19 @@ import {
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root",
 })
 export class DataService {
   apiURL: String = environment.apiURL;
+  userRole = null;
+  userID = null;
+
+  updateUserInfo = new Subject();
+  onUserInfoUpdate$ = this.updateUserInfo.asObservable();
+
   constructor(private httpClient: HttpClient) {}
 
   getPatientsList(): Observable<any> {
@@ -26,6 +32,11 @@ export class DataService {
   }
   getVitalsHistory(patientId): Observable<Object> {
     const URL = this.apiURL + "api/v1/getVitals/" + patientId;
+    return this.httpClient.get(URL);
+  }
+
+  getUserType(email): Observable<any> {
+    const URL = this.apiURL + "api/v1/searchUser/" + email;
     return this.httpClient.get(URL);
   }
 
