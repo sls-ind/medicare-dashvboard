@@ -17,6 +17,7 @@ import {
   RedirectRequest,
 } from "@azure/msal-browser";
 import { filter, takeUntil } from "rxjs/operators";
+import { DataService } from "src/app/services/data-service";
 
 interface Payload extends AuthenticationResult {
   idTokenClaims: {
@@ -58,7 +59,8 @@ export class UserBoxComponent implements OnInit {
     @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
-    public globals: ThemeOptions
+    public globals: ThemeOptions,
+    private dataService: DataService
   ) {}
 
   ngOnInit() {
@@ -119,14 +121,28 @@ export class UserBoxComponent implements OnInit {
         .loginPopup({ ...this.msalGuardConfig.authRequest } as PopupRequest)
         .subscribe((response: AuthenticationResult) => {
           this.authService.instance.setActiveAccount(response.account);
+          this.getUserType("");
         });
     } else {
       this.authService
         .loginPopup()
         .subscribe((response: AuthenticationResult) => {
           this.authService.instance.setActiveAccount(response.account);
+          this.getUserType("");
         });
     }
+  }
+
+  getUserType(email) {
+    // this.dataService.getUserType(email).subscribe((resp) => {
+    //   this.dataService.userRole = "";
+    // });
+    if (this.userName === "Nilesh") {
+      this.dataService.userRole = "Admin";
+    } else {
+      this.dataService.userID = 60;
+    }
+    this.dataService.updateUserInfo.next();
   }
 
   logout(popup?: boolean) {

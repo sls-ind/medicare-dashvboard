@@ -104,7 +104,7 @@ export class PatientDashboardComponent implements OnInit {
       return;
     }
 
-    this.dataService.uploadFile("api/v1/uploadReport", this.file).subscribe(
+    this.dataService.uploadFile("api/v1/uploadVitals", this.file).subscribe(
       (event) => {
         if (event.type == HttpEventType.UploadProgress) {
           const percentDone = Math.round((100 * event.loaded) / event.total);
