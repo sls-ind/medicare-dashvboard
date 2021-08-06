@@ -72,12 +72,16 @@ export class PatientDashboardComponent implements OnInit {
         alert("Failed to load details");
       }
     );
-    this.dataService.getVitalsHistory(id).subscribe(
+    this.dataService.getUserMedicalHistory(id).subscribe(
       (data) => {
+        console.log(data);
         if (!data) {
           alert("No vitals record found");
         }
-        this.patientVitalsHistory = data;
+        if(data ) {
+          this.patientVitalsHistoryManage(data);
+        };
+        
         debugger;
         //TODO: FOrmat the data and display accordingly
       },
@@ -116,5 +120,18 @@ export class PatientDashboardComponent implements OnInit {
         this.toastService.showSuccess("File load complete!");
       }
     );
+  }
+
+  patientVitalsHistoryManage(data){
+    this.patientVitalsHistory = [];
+    data.forEach((element, index) => {
+      if(index == 1){
+        this.patientVitalsHistory.push(element.date  )
+      } else {
+        this.patientVitalsHistory.push(element.date )
+      }
+      this.patientVitalsHistory.push(element.data.comments + "- Dr: " + element.doctorName)
+      // this.patientVitalsHistory.push({date: element.date, comments:element.data.comments, doctorName: element.doctorName})
+    });
   }
 }
