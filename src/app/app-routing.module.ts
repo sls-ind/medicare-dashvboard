@@ -15,6 +15,7 @@ import { PatientFormComponent } from "./DemoPages/create-patientform/create-pati
 import { PatientsListComponent } from "./DemoPages/Dashboards/patients-list/patients-list.component";
 import { PatientDashboardComponent } from "./DemoPages/Dashboards/patient-dashboard/patient-dashboard.component";
 import { PatientVitalsComponent } from "./DemoPages/Dashboards/patient-vitals/patient-vitals.component";
+import { ChatBotComponent } from "./DemoPages/Dashboards/chat-bot/chat-bot.component";
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
         path: "patient-vitals/:id",
         component: PatientVitalsComponent,
         data: { extraParameter: "patientsInfo" },
+      },
+      {
+        path: "chat",
+        component: ChatBotComponent,
+        data: { extraParameter: "chatWithVirtualAgent" },
       },
       { path: "**", redirectTo: "home" },
     ],

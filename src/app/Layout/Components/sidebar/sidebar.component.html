@@ -2,7 +2,10 @@
   (mouseout)="sidebarHover()">
   <div class="app-header__logo">
     <!-- <div class="logo-src"></div> -->
-    CoPIN
+    <!-- <img src="./../../../../assets/images/plus.png" alt="" style="width:40px"> -->
+    <img src="assets/images/plus1.png" alt="" style="width:40px">
+    <span style="margin-left: 10px; font-size: large;"> CoPIN </span>
+
     <div class="header__pane ml-auto">
       <button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
         [ngClass]="{'is-active' : globals.toggleSidebar}" (click)="toggleSidebar()">
@@ -44,6 +47,12 @@
                 <a routerLink="{{'/patient/' + userId}}" routerLinkActive="active-item" class="vsm-link">
                   <i class="vsm-icon  pe-7s-user"></i>
                   <span class="vsm-title">View Details</span>
+                </a>
+              </div>
+              <div class="vsm-item">
+                <a routerLink="/chat" routerLinkActive="active-item" class="vsm-link">
+                  <i class="vsm-icon  pe-7s-chat"></i>
+                  <span class="vsm-title">Virtual Agent Chat</span>
                 </a>
               </div>
             </ng-template>

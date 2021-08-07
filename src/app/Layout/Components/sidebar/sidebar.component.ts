@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
   private innerWidth: number;
   activeId = "dashboardsMenu";
   userId = 40;
-  isPatient = false; // show patients list
+  isPatient = true; // show patients list
 
   toggleSidebar() {
     this.globals.toggleSidebar = !this.globals.toggleSidebar;
@@ -44,14 +44,14 @@ export class SidebarComponent implements OnInit {
 
     this.extraParameter =
       this.activatedRoute.snapshot.firstChild.data.extraParameter;
-    this.dataService.onUserInfoUpdate$.subscribe((da) => {
-      this.userId = this.dataService.userID;
-      if (this.dataService.userRole) {
-        this.isPatient = !this.dataService.userRole
-          .toLocaleLowerCase()
-          .includes("admin");
-      }
-    });
+    // this.dataService.onUserInfoUpdate$.subscribe((da) => {
+    //   this.userId = this.dataService.userID;
+    //   if (this.dataService.userRole) {
+    //     this.isPatient = !this.dataService.userRole
+    //       .toLocaleLowerCase()
+    //       .includes("admin");
+    //   }
+    // });
   }
 
   @HostListener("window:resize", ["$event"])
