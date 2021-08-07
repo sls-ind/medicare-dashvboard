@@ -1,4 +1,4 @@
-<div class="main-card mb-3 card" *ngIf="patientData">
+<div class="main-card mb-2 card" *ngIf="patientData">
     <div class="card-header">
         <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Patient Information</div>
     </div>
@@ -7,7 +7,7 @@
             <thead>
                 <tr>
                     <th class="text-center">Patient ID</th>
-                    <th class="text-center">Image</th>
+                    <!-- <th class="text-center">Image</th> -->
                     <th class="text-center">Name</th>
                     <th class="text-center">Age</th>
                     <th class="text-center">Gender</th>
@@ -20,22 +20,22 @@
                     <td class="text-center text-muted" style="width: 80px;">
                         {{patientData.patientId}}
                     </td>
-                    <td class="text-center" style="width: 80px;">
-                        &nbsp;
-                    </td>
-                    <td class="text-left">{{patientData.fullName}}</td>
+                    <!-- <td class="text-center" style="width: 80px;">
+                        IMG
+                    </td> -->
+                    <td class="text-center">{{patientData.fullName}}</td>
                     <td class="text-center">{{patientData.age}}</td>
                     <td class="text-center">{{patientData.sex}}</td>
-                    <td class="text-left">
-                        <span class="pr-2 opacity-6">
+                    <td class="text-center">
+                        <!-- <span class="pr-2 opacity-6">
                             <i class="fa fa-business-time"></i>
-                        </span>
+                        </span> -->
                         {{patientData.address}}
                     </td>
-                    <td class="text-left">
-                        <span class="pr-2 opacity-6">
+                    <td class="text-center">
+                        <!-- <span class="pr-2 opacity-6">
                             <i class="fa fa-contact"></i>
-                        </span>
+                        </span> -->
                         {{patientData.phoneNo}}
                     </td>
                 </tr>
@@ -43,7 +43,8 @@
         </table>
     </div>
 </div>
-<div class="card m-3" *ngIf="admin">
+
+<div class="card mb-2" *ngIf="!admin">
     <h5 class="card-header">Upload Report:</h5>
     <div class="card-body">
         <div class="row">
@@ -60,9 +61,8 @@
     </div>
 </div>
 
-
-<div class="row m-3">
-    <div class="col-sm-12 col-md-9">
+<div class="row">
+    <div class="col-sm-12 col-md-6">
         <div class="card-hover-shadow-2x mb-3 card">
             <div class="card-header-tab card-header">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
@@ -95,6 +95,39 @@
             </div> -->
         </div>
     </div>
+    <div class="col-sm-12 col-md-6">
+        <div class="card-hover-shadow-2x mb-3 card">
+            <div class="card-header-tab card-header">
+                <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
+                    <i class="header-icon lnr-lighter icon-gradient bg-amy-crisp"> </i>
+                    Patient Vital Latest Information
+                </div>
+            </div>
+            <div class="scroll-area-lg">
+                <perfect-scrollbar [autoPropagation]="true">
+                    <div class="p-4">
+                        <div class="vertical-time-simple vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                            <div class="dot-primary vertical-timeline-element" [class]="dot-warning" *ngFor="let item of allVitalList; let index = index">
+                                <div>
+                                    <span class="vertical-timeline-element-icon bounce-in"></span>
+                                    <div class="vertical-timeline-element-content bounce-in">
+                                        <h4 class="timeline-title">{{item}}
+                                            <span class="badge badge-danger ml-2" *ngIf="index == 0">LATEST UPDATE</span> 
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </perfect-scrollbar>
+            </div>
+            <!-- <div class="d-block text-center card-footer">
+                <button class="btn-shadow btn-wide btn-pill btn btn-focus">
+                    View All Messages
+                </button>
+            </div> -->
+        </div>
+    </div>
     <div class="col-sm-0 col-md-3">
         &nbsp;
         <button class="btn btn-info text-light">
@@ -102,3 +135,4 @@
         </button>
     </div>
 </div>
+

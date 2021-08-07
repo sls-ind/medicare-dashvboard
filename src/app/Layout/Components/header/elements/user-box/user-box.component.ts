@@ -95,6 +95,7 @@ export class UserBoxComponent implements OnInit {
      * Note: Basic usage demonstrated. Your app may require more complicated account selection logic
      */
     let activeAccount = this.authService.instance.getActiveAccount();
+    console.log(activeAccount);
     this.userName = activeAccount ? activeAccount.name : null;
 
     if (
@@ -138,11 +139,11 @@ export class UserBoxComponent implements OnInit {
     // this.dataService.getUserType(email).subscribe((resp) => {
     //   this.dataService.userRole = "";
     // });
-    if (this.userName === "Nilesh") {
+    // if (this.userName === "Nilesh") {
       this.dataService.userRole = "Admin";
-    } else {
-      this.dataService.userID = 60;
-    }
+    // } else {
+      // this.dataService.userID = 60;
+    // }
     this.dataService.updateUserInfo.next();
   }
 

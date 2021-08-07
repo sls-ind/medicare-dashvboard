@@ -24,7 +24,7 @@ export class PatientsListComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    // this.getPatientDetails();
+    this.getPatientDetails();
   }
 
   getPatientDetails() {

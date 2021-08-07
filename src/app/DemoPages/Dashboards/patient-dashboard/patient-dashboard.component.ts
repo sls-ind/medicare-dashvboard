@@ -42,6 +42,9 @@ export class PatientDashboardComponent implements OnInit {
     dots: true,
   };
   chartOptionsDetails = [];
+  allVital = [];
+  patientVitalsList:any;
+  allVitalList:any;
 
   constructor(
     private router: Router,
@@ -84,6 +87,20 @@ export class PatientDashboardComponent implements OnInit {
         
         debugger;
         //TODO: FOrmat the data and display accordingly
+      },
+      (error) => {
+        alert("Failed to load vitals data");
+      }
+    );
+    this.dataService.getVitalsHistory(id).subscribe(
+      (data) => {
+        if (!data) {
+          alert("No vitals record found");
+        }
+        this.patientVitalsList= data;
+        this.dataFormater();
+        console.log("this.patientVitalsHistory", this.patientVitalsHistory)
+        // debugger;
       },
       (error) => {
         alert("Failed to load vitals data");
@@ -134,4 +151,65 @@ export class PatientDashboardComponent implements OnInit {
       // this.patientVitalsHistory.push({date: element.date, comments:element.data.comments, doctorName: element.doctorName})
     });
   }
+
+  dataFormater() {
+    const data =  this.patientVitalsList;
+    console.log("data >>>> ",data);
+    if(!data){
+      return;
+    }
+
+    const formatedData = {};
+    // const keys = ["BP_SYS","HEART_RATE","SUGAR","O2SUPPORT","TEMP","BP_DIA","SPO2"]
+
+    // keys.forEach(element => {
+    data.forEach((element) => {
+      if (["BP_SYS", "BP_DIA"].includes(element["vitalName"])) {
+        if (formatedData && formatedData["BP"] && formatedData["BP"].length) {
+          formatedData["BP"].push(element);
+        } else {
+          formatedData["BP"] = [element];
+        }
+      } else if (
+        formatedData &&
+        formatedData[element["vitalName"]] &&
+        formatedData[element["vitalName"]].length
+      ) {
+        formatedData[element["vitalName"]].push(element);
+      } else {
+        formatedData[element["vitalName"]] = [element];
+      }
+    });
+
+    console.log("formatedData", formatedData);
+    // this.formatedData = formatedData;
+    this.allVital = [];
+    this.allVitalList = [];
+    for (const property in formatedData) {
+      this.allVital.push(property);
+    }
+    for (const property in formatedData) {
+      
+      let array = formatedData[property] 
+      let info = "" 
+      
+      if(this.allVitalList && this.allVitalList.length == 0){
+        this.allVitalList.push(array[0]['updatedTS']); 
+      }
+
+      if(array && array.length == 2 ){
+        info += (array[0]['vitalName'] == "BP_SYS") ? "BP SYS"  : "BP DIA" + ' - ' + array[0]['vitalValue'] + 
+        (array[1]['vitalName'] == "BP_SYS") ? "BP SYS" : "BP DIA" + ' - ' + array[1]['vitalValue'] 
+      } else {
+        info = property + ' - ' + array[0]['vitalValue'];
+      }
+      if(info !== ""){
+        this.allVitalList.push(info);
+      }
+    }
+    // console.log(this.allVital);
+    console.log("this.allVital", this.allVital);
+  }
+
+
 }

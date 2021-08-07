@@ -163,7 +163,7 @@ $widget-spacer: $spacer;
     align-items: center;
 
     .icon-wrapper {
-      min-width: 54px;
+      min-width: 110px;
       margin: 0 ($widget-spacer) 0 0;
     }
 
@@ -241,7 +241,7 @@ $widget-spacer: $spacer;
 }
 
 .icon-wrapper {
-  width: 54px;
+  width: 110px;
   height: 54px;
   margin: 0 auto;
   @extend %center-elem;
