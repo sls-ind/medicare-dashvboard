@@ -54,6 +54,13 @@ export class DynamicChartComponent implements OnInit {
   }
 
   public randomize(): void {
-    this.barChartType = this.barChartType === 'bar' ? 'line' : 'bar';
+    // const chartsType = ['bar', 'line', 'pie', 'polarArea', 'radar', 'scatter'];
+    // const index = chartsType.indexOf(this.barChartType);
+    // if(chartsType.length != (index + 1)){
+    //   this.barChartType = chartsType[index +1]
+    // } else {
+    //   this.barChartType = chartsType[0]
+      this.barChartType = this.barChartType === 'line' ? 'bar' : 'line';
+    // }
   }
 }

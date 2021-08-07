@@ -85,6 +85,7 @@ export class UserBoxComponent implements OnInit {
 
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
+    console.log("this.loginDisplay", this.loginDisplay)
   }
 
   checkAndSetActiveAccount() {

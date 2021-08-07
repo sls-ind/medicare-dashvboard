@@ -275,7 +275,7 @@ export class PatientVitalsComponent implements OnInit {
   chartDetails(property) {
    
     let obj = {
-      barChartType: "bar",
+      barChartType: "line",
       barChartLegend: true,
     };
     let barChartLabels = [];
