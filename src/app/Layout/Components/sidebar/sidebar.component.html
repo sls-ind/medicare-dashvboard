@@ -20,7 +20,6 @@
       <perfect-scrollbar [autoPropagation]="true">
         <div class="v-sidebar-menu vsm-default">
           <div class="vsm-list">
-
             <div class="vsm-header">Take me to</div>
             <div class="vsm-item">
               <a routerLink="/home" routerLinkActive="active-item" class="vsm-link">
@@ -28,34 +27,36 @@
                 <span class="vsm-title">Home</span>
               </a>
             </div>
-            <ng-container *ngIf="isPatient === false; else elseTemplate">
-              <div class="vsm-item">
-                <a routerLink="/patient" routerLinkActive="active-item" class="vsm-link">
-                  <i class="vsm-icon pe-7s-users"></i>
-                  <span class="vsm-title">View Patients</span>
-                </a>
-              </div>
-              <div class="vsm-item">
-                <a routerLink="/add-user" routerLinkActive="active-item" class="vsm-link">
-                  <i class="vsm-icon pe-7s-add-user"></i>
-                  <span class="vsm-title">Onboard New Patient</span>
-                </a>
-              </div>
-            </ng-container>
-            <ng-template #elseTemplate>
-              <div class="vsm-item">
-                <a routerLink="{{'/patient/' + userId}}" routerLinkActive="active-item" class="vsm-link">
-                  <i class="vsm-icon  pe-7s-user"></i>
-                  <span class="vsm-title">View Details</span>
-                </a>
-              </div>
-              <div class="vsm-item">
-                <a routerLink="/chat" routerLinkActive="active-item" class="vsm-link">
-                  <i class="vsm-icon  pe-7s-chat"></i>
-                  <span class="vsm-title">Virtual Agent Chat</span>
-                </a>
-              </div>
-            </ng-template>
+            <div *ngIf="userId !== null && userId !== undefined">
+              <ng-container *ngIf="isPatient === false; else elseTemplate">
+                <div class="vsm-item">
+                  <a routerLink="/patient" routerLinkActive="active-item" class="vsm-link">
+                    <i class="vsm-icon pe-7s-users"></i>
+                    <span class="vsm-title">View Patients</span>
+                  </a>
+                </div>
+                <div class="vsm-item">
+                  <a routerLink="/add-user" routerLinkActive="active-item" class="vsm-link">
+                    <i class="vsm-icon pe-7s-add-user"></i>
+                    <span class="vsm-title">Onboard New Patient</span>
+                  </a>
+                </div>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <div class="vsm-item">
+                  <a routerLink="{{'/patient/' + userId}}" routerLinkActive="active-item" class="vsm-link">
+                    <i class="vsm-icon  pe-7s-user"></i>
+                    <span class="vsm-title">View Details</span>
+                  </a>
+                </div>
+                <div class="vsm-item">
+                  <a routerLink="/chat" routerLinkActive="active-item" class="vsm-link">
+                    <i class="vsm-icon  pe-7s-chat"></i>
+                    <span class="vsm-title">Virtual Agent Chat</span>
+                  </a>
+                </div>
+              </ng-template>
+            </div>
 
           </div>
         </div>
