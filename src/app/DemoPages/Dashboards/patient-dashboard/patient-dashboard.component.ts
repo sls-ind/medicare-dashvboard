@@ -31,7 +31,7 @@ export class PatientDashboardComponent implements OnInit {
     "This is an example dashboard created using build-in elements and components.";
   icon = "pe-7s-graph2 icon-gradient bg-tempting-azure";
   patientId;
-  admin = true;
+  admin = false;
   file;
   slideConfig6 = {
     className: "center",

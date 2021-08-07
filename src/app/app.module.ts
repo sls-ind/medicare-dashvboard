@@ -138,6 +138,7 @@ import { PatientFormComponent } from "./DemoPages/create-patientform/create-pati
 import { ToastsContainer } from "./toast-container/toast-container.component";
 import { PatientVitalsComponent } from './DemoPages/Dashboards/patient-vitals/patient-vitals.component';
 import { ChatBotComponent } from './DemoPages/Dashboards/chat-bot/chat-bot.component';
+import { MedSearchComponent } from './med-search/med-search.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -288,6 +289,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ToastsContainer,
     PatientVitalsComponent,
     ChatBotComponent,
+    MedSearchComponent,
   ],
   imports: [
     BrowserModule,

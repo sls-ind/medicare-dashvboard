@@ -2,8 +2,8 @@
   (mouseout)="sidebarHover()">
   <div class="app-header__logo">
     <!-- <div class="logo-src"></div> -->
-    <!-- <img src="./../../../../assets/images/plus.png" alt="" style="width:40px"> -->
-    <img src="assets/images/plus.png" alt="" style="width:40px">
+    <img src="./../../../../assets/images/plus.png" alt="" style="width:40px">
+    <!-- <img src="assets/images/plus.png" alt="" style="width:40px"> -->
     <span style="margin-left: 10px; font-size: large;"> CoPIN </span>
 
     <!-- <img src="./../../../../assets/images/plus1.png" alt="" style="width:40px">
@@ -22,11 +22,17 @@
       <perfect-scrollbar [autoPropagation]="true">
         <div class="v-sidebar-menu vsm-default">
           <div class="vsm-list">
-            <div class="vsm-header">Take me to</div>
+            <!-- <div class="vsm-header">Take me to</div> -->
             <div class="vsm-item">
               <a routerLink="/home" routerLinkActive="active-item" class="vsm-link">
                 <i class="vsm-icon pe-7s-global"></i>
                 <span class="vsm-title">Home</span>
+              </a>
+            </div>
+            <div class="vsm-item">
+              <a routerLink="/searchAll" routerLinkActive="active-item" class="vsm-link">
+                <i class="vsm-icon pe-7s-global"></i>
+                <span class="vsm-title">Search From Store</span>
               </a>
             </div>
             <div *ngIf="userId !== null && userId !== undefined">
@@ -59,9 +65,14 @@
                 </div>
               </ng-template>
             </div>
-
+            
           </div>
         </div>
+        <footer class="page-footer font-small blue pt-4 text-center">
+          <span text>  Patient ID : {{userId}} </span>
+          <br>
+          <span>  Admit Date : {{admitDate}} </span>
+        </footer>
       </perfect-scrollbar>
     </div>
   </div>

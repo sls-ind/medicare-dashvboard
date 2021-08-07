@@ -86,7 +86,7 @@ export class HeaderComponent {
       this.userWeather =
         // resp["results"][0].phrase +
         // " " +
-        resp["results"][0].temperature.value +
+        resp["results"][0].temperature.value + "⁰" +
         resp["results"][0].temperature.unit;
     });
   }

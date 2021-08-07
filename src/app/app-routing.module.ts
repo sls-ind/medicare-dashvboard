@@ -17,6 +17,8 @@ import { PatientDashboardComponent } from "./DemoPages/Dashboards/patient-dashbo
 import { PatientVitalsComponent } from "./DemoPages/Dashboards/patient-vitals/patient-vitals.component";
 import { ChatBotComponent } from "./DemoPages/Dashboards/chat-bot/chat-bot.component";
 
+import { MedSearchComponent } from "./med-search/med-search.component";
+
 const routes: Routes = [
   {
     path: "",
@@ -57,7 +59,10 @@ const routes: Routes = [
         component: ChatBotComponent,
         data: { extraParameter: "chatWithVirtualAgent" },
       },
+      { path: "searchAll", component: MedSearchComponent,
+      data: { extraParameter: "formElementsMenu" } },
       { path: "**", redirectTo: "home" },
+      
     ],
   },
 

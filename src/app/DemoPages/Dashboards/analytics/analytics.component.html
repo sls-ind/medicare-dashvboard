@@ -1,24 +1,31 @@
 <app-page-title [heading]="heading" [subheading]="subheading" [icon]="icon"></app-page-title>
+
+<div>
+    <iframe src="https://www.covid19india.org/" frameborder="0" width="100%" height="300" style="border:none;" ng-src="MapSwitcher">
+        
+    </iframe>
+</div>
+
 <ngb-carousel>
-    <ng-template ngbSlide>
+    <!-- <ng-template ngbSlide>
         <div class="picsum-img-wrapper"> <img src="assets/images/stethescope.jpg" alt="Random first slide"
-                style="width: 80%;"> </div>
-        <!-- <div class="carousel-caption"> <h3>First slide label</h3> <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> </div> -->
-    </ng-template>
+                style="width: 100%;"> </div>
+    </ng-template> -->
     <ng-template ngbSlide>
-        <div class="picsum-img-wrapper"> <img src="assets/images/info/bloodPressureInfo.png" alt="Random second slide"
-                style="width: 90%;"> </div>
+        <div class="picsum-img-wrapper"> <img src="assets/images/info/bloodPressureInfo.png" alt="Random first slide"
+                style="width: 100%;"> </div>
         <!-- <div class="carousel-caption"> <h3>Second slide label</h3> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> </div> -->
     </ng-template>
     <ng-template ngbSlide>
         <div class="picsum-img-wrapper"> <img src="assets/images/info/Bmi-chart.jpeg" alt="Random second slide"
-                style="width: 90%;"> </div>
+                style="width: 100%;"> </div>
         <!-- <div class="carousel-caption"> <h3>Second slide label</h3> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> </div> -->
     </ng-template>
     <ng-template ngbSlide>
-        <div class="picsum-img-wrapper"> <img src="assets/images/info/Benefits-of-the-BMI-Calculator-for-People-of-all-Ages.jpeg" alt="Random second slide"
-                style="width: 90%;"> </div>
+        <div class="picsum-img-wrapper"> <img src="assets/images/info/Benefits-of-the-BMI-Calculator-for-People-of-all-Ages.jpeg" alt="Random  slide"
+                style="width: 100%;"> </div>
         <!-- <div class="carousel-caption"> <h3>Second slide label</h3> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> </div> -->
     </ng-template>
 </ngb-carousel>
+
 <app-news-feed></app-news-feed>

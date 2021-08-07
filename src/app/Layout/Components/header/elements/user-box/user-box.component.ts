@@ -38,6 +38,7 @@ export class UserBoxComponent implements OnInit {
   geoLocation: string;
   userWeather: any;
   userName: string;
+  email: string;
 
   @HostBinding("class.isActive")
   get isActiveAsGetter() {
@@ -95,8 +96,15 @@ export class UserBoxComponent implements OnInit {
      * Note: Basic usage demonstrated. Your app may require more complicated account selection logic
      */
     let activeAccount = this.authService.instance.getActiveAccount();
-    console.log(activeAccount);
+    console.log("activeAccount", activeAccount);
     this.userName = activeAccount ? activeAccount.name : null;
+    this.email = activeAccount ? activeAccount.username : null;
+    console.log("this.email", this.email);
+
+
+    if(this.email){
+      this.getUserType(this.email);
+    }
 
     if (
       !activeAccount &&
@@ -105,6 +113,7 @@ export class UserBoxComponent implements OnInit {
       let accounts = this.authService.instance.getAllAccounts();
       this.authService.instance.setActiveAccount(accounts[0]);
     }
+
   }
 
   loginRedirect() {
@@ -136,15 +145,21 @@ export class UserBoxComponent implements OnInit {
   }
 
   getUserType(email) {
-    // this.dataService.getUserType(email).subscribe((resp) => {
-    //   this.dataService.userRole = "";
-    // });
+    this.dataService.getUserType(email).subscribe((resp) => {
+      console.log("resp", resp);
+      this.dataService.userRole = "";
+   
     // if (this.userName === "Nilesh") {
-      this.dataService.userRole = "Admin";
-    // } else {
-      // this.dataService.userID = 60;
-    // }
-    this.dataService.updateUserInfo.next();
+      if (resp[0]['role'] == "ADMIN") {
+        this.dataService.userID = resp[0]['patientId'];
+        this.dataService.userRole = "Admin";
+      } else {
+        this.dataService.userID = resp[0]['patientId'];
+        this.dataService.userRole = "USER";
+        // this.dataService.userID = 40;
+      }
+      this.dataService.updateUserInfo.next();
+    });
   }
 
   logout(popup?: boolean) {
@@ -156,4 +171,9 @@ export class UserBoxComponent implements OnInit {
       this.authService.logoutRedirect();
     }
   }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    // this.subscription.unsubscribe();
+}
 }

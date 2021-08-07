@@ -19,7 +19,9 @@ export class DataService {
   updateUserInfo = new Subject();
   onUserInfoUpdate$ = this.updateUserInfo.asObservable();
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    console.log("this.updateUserInfo", this.updateUserInfo)
+  }
 
   getPatientsList(): Observable<any> {
     const URL = this.apiURL + "api/v1/getUser";
@@ -59,5 +61,11 @@ export class DataService {
 
     const req = new HttpRequest("POST", url, formData, options);
     return this.httpClient.request(req);
+  }
+
+  getPharmaData(val): Observable<any> {
+    const URL = this.apiURL + "api/v1/getProducts/" + btoa(val);
+
+    return this.httpClient.get(URL);
   }
 }
