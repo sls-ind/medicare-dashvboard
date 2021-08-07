@@ -40,6 +40,8 @@ export class PatientVitalsComponent implements OnInit {
     dots: true,
   };
   chartOptionsDetails = [];
+  allVital: any = [];
+  displayVital: any;
 
   public datasets = [
     {
@@ -193,7 +195,7 @@ export class PatientVitalsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.dataFormater();
+    // this.dataFormater();
     const id = this.activatedRoute.snapshot.params["id"];
     this.getData(id);
     // this.chartDetails();
@@ -220,8 +222,8 @@ export class PatientVitalsComponent implements OnInit {
           alert("No vitals record found");
         }
         this.patientVitalsHistory = data;
-        debugger;
-        //TODO: FOrmat the data and display accordingly
+        this.dataFormater();
+        // debugger;
       },
       (error) => {
         alert("Failed to load vitals data");
@@ -230,136 +232,11 @@ export class PatientVitalsComponent implements OnInit {
   }
 
   dataFormater() {
-    const data = [
-      {
-        patientID: 65,
-        vitalName: "BP_SYS",
-        vitalValue: "120",
-        updatedTS: "28/07/2021 02:37 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "HEART_RATE",
-        vitalValue: "120",
-        updatedTS: "28/07/2021 02:37 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "SUGAR",
-        vitalValue: "140",
-        updatedTS: "28/07/2021 02:37 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "O2SUPPORT",
-        vitalValue: "2",
-        updatedTS: "28/07/2021 02:37 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "TEMP",
-        vitalValue: "37.1",
-        updatedTS: "28/07/2021 02:37 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "BP_DIA",
-        vitalValue: "80",
-        updatedTS: "28/07/2021 02:37 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "SPO2",
-        vitalValue: "95",
-        updatedTS: "28/07/2021 02:37 PM",
-      },
-
-      {
-        patientID: 65,
-        vitalName: "BP_SYS",
-        vitalValue: "110",
-        updatedTS: "29/07/2021 06:40 AM",
-      },
-      {
-        patientID: 65,
-        vitalName: "HEART_RATE",
-        vitalValue: "110",
-        updatedTS: "29/07/2021 06:40 AM",
-      },
-      {
-        patientID: 65,
-        vitalName: "SUGAR",
-        vitalValue: "145",
-        updatedTS: "29/07/2021 06:40 AM",
-      },
-      {
-        patientID: 65,
-        vitalName: "O2SUPPORT",
-        vitalValue: "3",
-        updatedTS: "29/07/2021 06:40 AM",
-      },
-      {
-        patientID: 65,
-        vitalName: "TEMP",
-        vitalValue: "35",
-        updatedTS: "29/07/2021 06:40 AM",
-      },
-      {
-        patientID: 65,
-        vitalName: "BP_DIA",
-        vitalValue: "70",
-        updatedTS: "29/07/2021 06:40 AM",
-      },
-      {
-        patientID: 65,
-        vitalName: "SPO2",
-        vitalValue: "95",
-        updatedTS: "29/07/2021 06:40 AM",
-      },
-
-      {
-        patientID: 65,
-        vitalName: "BP_SYS",
-        vitalValue: "130",
-        updatedTS: "29/07/2021 04:15 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "HEART_RATE",
-        vitalValue: "140",
-        updatedTS: "29/07/2021 04:15 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "SUGAR",
-        vitalValue: "110",
-        updatedTS: "29/07/2021 04:15 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "O2SUPPORT",
-        vitalValue: "5",
-        updatedTS: "29/07/2021 04:15 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "TEMP",
-        vitalValue: "36.1",
-        updatedTS: "29/07/2021 04:15 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "BP_DIA",
-        vitalValue: "80.1",
-        updatedTS: "29/07/2021 04:15 PM",
-      },
-      {
-        patientID: 65,
-        vitalName: "SPO2",
-        vitalValue: "95.2",
-        updatedTS: "29/07/2021 04:15 PM",
-      },
-    ];
+    const data =  this.patientVitalsHistory;
+    console.log("data >>>> ",data);
+    if(!data){
+      return;
+    }
 
     const formatedData = {};
     // const keys = ["BP_SYS","HEART_RATE","SUGAR","O2SUPPORT","TEMP","BP_DIA","SPO2"]
@@ -385,23 +262,20 @@ export class PatientVitalsComponent implements OnInit {
 
     console.log("formatedData", formatedData);
     // this.formatedData = formatedData;
+    this.allVital = [];
     for (const property in formatedData) {
+      console.log("property", property);
+      this.allVital.push(property);
       this.chartDetails(formatedData[property]);
     }
+    
+    this.displayVital = this.chartOptionsDetails[0];
   }
 
   chartDetails(property) {
-    // this.chartOptionsDetails = {
-    //   barChartLabels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug'],
-    //   barChartType: 'bar',
-    //   barChartLegend: true,
-    //   barChartData: [
-    //     {data: [65, 59, 80, 81, 56, 55, 40], label: 'SIS'},
-    //     {data: [28, 48, 40, 19, 86, 27, 90], label: 'DIA'}
-    //   ]
-    // }
+   
     let obj = {
-      barChartType: "bar",
+      barChartType: "line",
       barChartLegend: true,
     };
     let barChartLabels = [];
@@ -436,6 +310,8 @@ export class PatientVitalsComponent implements OnInit {
     }
     console.log("finalChartOptionsDetails", finalChartOptionsDetails);
     this.chartOptionsDetails.push(finalChartOptionsDetails);
+    console.log("chartOptionsDetails", this.chartOptionsDetails);
+
     // this.chartOptionsDetails = {
     //   barChartLabels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 Aug'],
     //   barChartType: 'bar',
@@ -446,4 +322,6 @@ export class PatientVitalsComponent implements OnInit {
     //   ]
     // }
   }
+
+  
 }

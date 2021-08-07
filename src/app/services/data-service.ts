@@ -34,6 +34,10 @@ export class DataService {
     const URL = this.apiURL + "api/v1/getVitals/" + patientId;
     return this.httpClient.get(URL);
   }
+  getUserMedicalHistory(patientId): Observable<Object> {
+    const URL = this.apiURL + "api/v1/getUserMedicalHistory/" + patientId;
+    return this.httpClient.get(URL);
+  }
 
   getUserType(email): Observable<any> {
     const URL = this.apiURL + "api/v1/searchUser/" + email;

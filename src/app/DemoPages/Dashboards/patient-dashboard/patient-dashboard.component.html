@@ -1,3 +1,48 @@
+<div class="main-card mb-3 card" *ngIf="patientData">
+    <div class="card-header">
+        <div class="card-header-title font-size-lg text-capitalize font-weight-normal">Patient Information</div>
+    </div>
+    <div class="table-responsive">
+        <table class="align-middle text-truncate mb-0 table table-borderless table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">Patient ID</th>
+                    <th class="text-center">Image</th>
+                    <th class="text-center">Name</th>
+                    <th class="text-center">Age</th>
+                    <th class="text-center">Gender</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center">Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center text-muted" style="width: 80px;">
+                        {{patientData.patientId}}
+                    </td>
+                    <td class="text-center" style="width: 80px;">
+                        &nbsp;
+                    </td>
+                    <td class="text-left">{{patientData.fullName}}</td>
+                    <td class="text-center">{{patientData.age}}</td>
+                    <td class="text-center">{{patientData.sex}}</td>
+                    <td class="text-left">
+                        <span class="pr-2 opacity-6">
+                            <i class="fa fa-business-time"></i>
+                        </span>
+                        {{patientData.address}}
+                    </td>
+                    <td class="text-left">
+                        <span class="pr-2 opacity-6">
+                            <i class="fa fa-contact"></i>
+                        </span>
+                        {{patientData.phoneNo}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 <div class="card m-3" *ngIf="admin">
     <h5 class="card-header">Upload Report:</h5>
     <div class="card-body">
@@ -15,6 +60,7 @@
     </div>
 </div>
 
+
 <div class="row m-3">
     <div class="col-sm-12 col-md-9">
         <div class="card-hover-shadow-2x mb-3 card">
@@ -27,110 +73,13 @@
             <div class="scroll-area-lg">
                 <perfect-scrollbar [autoPropagation]="true">
                     <div class="p-4">
-                        <div
-                            class="vertical-time-simple vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
-                            <div class="dot-danger vertical-timeline-element">
+                        <div class="vertical-time-simple vertical-without-time vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
+                            <div class="dot-primary vertical-timeline-element" [class]="dot-warning" *ngFor="let item of patientVitalsHistory; let index = index">
                                 <div>
                                     <span class="vertical-timeline-element-icon bounce-in"></span>
                                     <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">All Hands Meeting</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-warning vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-success vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">Build the production release
-                                            <div class="badge badge-danger ml-2">NEW</div>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-primary vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">
-                                            Something not important
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-warning vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-success vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">Build the production release
-                                            <div class="badge badge-danger ml-2">NEW</div>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-info vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">This dot has an info state</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-dark vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">This dot has a dark state</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-danger vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">All Hands Meeting</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-warning vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <p>Yet another one, at <span class="text-success">15:00 PM</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-success vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">Build the production release
-                                            <div class="badge badge-danger ml-2">NEW</div>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dot-primary vertical-timeline-element">
-                                <div>
-                                    <span class="vertical-timeline-element-icon bounce-in"></span>
-                                    <div class="vertical-timeline-element-content bounce-in">
-                                        <h4 class="timeline-title">
-                                            Something not important
+                                        <h4 class="timeline-title">{{item}}
+                                            <span class="badge badge-danger ml-2" *ngIf="index == 0">NEW</span> 
                                         </h4>
                                     </div>
                                 </div>
@@ -139,11 +88,11 @@
                     </div>
                 </perfect-scrollbar>
             </div>
-            <div class="d-block text-center card-footer">
+            <!-- <div class="d-block text-center card-footer">
                 <button class="btn-shadow btn-wide btn-pill btn btn-focus">
                     View All Messages
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="col-sm-0 col-md-3">
